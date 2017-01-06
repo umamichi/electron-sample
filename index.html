@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <script>
+    // var webview = document.createElement("webview");
+    // webview.setAttribute("src", "http://www.example.com/");
+    // webview.setAttribute("allowpopups", "true");
+    // document.body.appendChild(webview);
+    
+    
+    const fs = require('fs');
+    fs.readFile ('sample.html', (err, data) => {
+      if (!err) {
+        document.getElementById('app').innerHTML = data;
+      }
+    });
+    
+    const moment = require('moment');
+    console.log(moment().format('YYYY/MM/DD'));
+    
+    </script>
+  </head>
+  <body>
+    <div id="app">app div</a>
+  </body>
+</html>

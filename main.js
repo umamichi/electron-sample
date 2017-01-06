@@ -1,5 +1,6 @@
 'use strict';
 const electron = require('electron');
+const autoUpdater = require('electron-auto-updater').autoUpdater;
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
@@ -16,5 +17,23 @@ app.on('ready', () => {
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
+  
+  
+  autoUpdater.checkForUpdates();
+  console.log('autoUpdater.getFeedURL()', autoUpdater.getFeedURL());
+  autoUpdater.on('error', (err) => {
+    console.log('err');
+  });
+  autoUpdater.on('checking-for-update', () => {
+    console.log('checking-for-update');
+  });
+  autoUpdater.on('update-available', () => {
+    console.log('update-available');
+  });
+  autoUpdater.on('update-not-available', () => {
+    console.log('update-not-available');
+  });
 
 });
+
+

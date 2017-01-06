@@ -5,16 +5,19 @@
   "main": "main.js",
   "devDependencies": {
     "electron": "^1.4.13",
+    "electron-auto-updater": "^0.10.0",
     "electron-builder": "^10.17.3",
     "electron-packager": "^8.4.0"
   },
   "dependencies": {
+    "electron-auto-updater": "^0.10.0",
     "express": "^4.14.0",
     "moment": "^2.17.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "build --win --x64"
+    "dev": "electron -r babel-register -r babel-polyfill ./main.js",
+    "build": "build --win --x64 --publish always",
+    "build-mac": "build --publish always"
   },
   "author": "umamichi",
   "license": "ISC",
@@ -22,9 +25,11 @@
     "appId": "com.electron.your-app",
     "asar": false,
     "mac": {
+      "publish": [
+        "github"
+      ],
       "category": "your.app.category.type"
     },
-    "win": {
-    }
+    "win": {}
   }
 }
